@@ -1,0 +1,39 @@
+195. Tenth Line
+------------------------------------------------------------------------------------------------------------------------------------------------
+  sed -n '10 p' file.txt
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+-n: slient output, which means sed will not output the file content
+10: the tenth line
+p: print
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+  awk 'NR==10' file.txt
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+lineCount=$(cat file.txt | wc -l)
+
+if [ $lineCount -gt 9 ]
+then
+cat file.txt | head -n10 |tail -n1 ;
+fi;
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+Concatenate(cat): command is very frequently used in Linux. It reads data from the file and gives their content as output. It helps us to create, view, concatenate files.
+
+Stream Editor (sed): It can perform lot’s of function on file like, searching, find and replace, insertion or deletion. By using SED you can edit files even without opening it, which is much quicker way to find and replace.
+
+Solution:
+
+# Read from the file file.txt and output the tenth line to stdout.
+------------------------------------------------------------------------------------------------------------------------------------------------
+cat file.txt | sed -n 10p
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+sed -n 10p file.txt
