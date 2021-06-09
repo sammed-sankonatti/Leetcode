@@ -3,43 +3,19 @@ using namespace std;
 
 vector<int> twoSumBruteForce(vector<int> &num, int target)
 {
-    int n= num.size();
+    int n = num.size();
     vector<int> result;
-    
-    for(int i=0;i<n;i++)
-    {
-        for(int j=0;j<n;j++)
-        {
-            if(num[i]+num[j]==target)
-            {
+
+    for (int i = 0; i < n; i++){
+        for (int j = 0; j < n; j++){
+            if (num[i] + num[j] == target){
                 result.push_back(i);
                 result.push_back(j);
                 return result;
             }
         }
     }
-
     return result;
-}
-
-void twoSumEfficientWithSet(vector<int> &num, int target)
-{
-    int n= num.size();
-    set<int> s;
-
-    for(auto i:num)
-    {
-        s.insert(target-i);
-    }
-
-    for(auto i:num)
-    {
-        if(s.find(i)!=s.end())
-        {
-            cout<<"sum exist"<<endl;
-            break;
-        }
-    }   
 }
 
 vector<int> twoSumEfficientWithMap(vector<int> &num, int target)
@@ -47,11 +23,6 @@ vector<int> twoSumEfficientWithMap(vector<int> &num, int target)
     int n=num.size();
     unordered_map<int,int> ump;
     vector<int> result;
-
-    // for(int i=0;i<n;i++)
-    // {
-    //     ump[num[i]]==i;
-    // }
 
     for(int i=0;i<n;i++)
     {
@@ -65,15 +36,27 @@ vector<int> twoSumEfficientWithMap(vector<int> &num, int target)
         else
             ump[num[i]]=i;
     }
-
-    // for (int i = 0; i < n; i++)
-    // {
-    //     if (ump.count(target - num[i]) == 1)
-    //         return {ump[target - num[i]], i};
-    //     ump[num[i]]=i;
-    // }
-
     return {};
+}
+
+void twoSumEfficientWithSet(vector<int> &num, int target)
+{
+    int n = num.size();
+    set<int> s;
+
+    for (auto i : num)
+    {
+        s.insert(target - i);
+    }
+
+    for (auto i : num)
+    {
+        if (s.find(i) != s.end())
+        {
+            cout << "sum exist" << endl;
+            break;
+        }
+    }
 }
 
     void print(vector<int> &result)
